@@ -1,7 +1,7 @@
 select 
-uc.id as owner_id,
+uc.id AS owner_id,
 concat(uc.first_name, ' ', uc.last_name) AS name,
-count(pp.is_regular_savings) As savings_count,
+count(pp.is_regular_savings) AS savings_count,
 count(pp.is_a_fund) AS investment_count,
 sum(sa.confirmed_amount) AS total_deposit
 from  
@@ -11,7 +11,7 @@ adashi_staging.savings_savingsaccount AS sa on uc.id = sa.owner_id
 inner join
 adashi_staging.plans_plan AS pp on sa.plan_id = pp.id
 where
-uc.id in 
+uc.id IN 
 (
 select sa.owner_id from adashi_staging.savings_savingsaccount AS sa
 inner join
